@@ -1,0 +1,20 @@
+{
+  "name": "short-drama-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/web",
+    "apps/server"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "npm run dev -w apps/web",
+    "dev:server": "npm run dev -w apps/server",
+    "build": "npm run build -w apps/web && npm run build -w apps/server",
+    "typecheck": "npm run typecheck -w apps/web && npm run typecheck -w apps/server"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

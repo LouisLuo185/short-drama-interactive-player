@@ -1,0 +1,5 @@
+paddlepaddle
+paddleocr
+onnxruntime
+opencv-python-headless
+numpy

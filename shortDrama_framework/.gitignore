@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+tools/asr-highlight-pipeline/config.local.json
+tools/asr-highlight-pipeline/*.secret.json
+
+# Build artifacts and caches
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.vite/
+.cache/
+
+# Local IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Python local runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Server runtime data, generated AI outputs, and local database
+apps/server/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Local media assets are large and may have usage restrictions.
+apps/server/media/
+*.mp4
+*.mov
+*.m4v
+*.avi
+*.wav
+
+# OCR/model files should be provided by deployment setup, not committed.
+*.traineddata
+
+# Pipeline outputs
+tools/asr-highlight-pipeline/output/

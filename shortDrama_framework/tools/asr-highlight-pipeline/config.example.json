@@ -1,0 +1,11 @@
+{
+  "doubao": {
+    "apiKey": "YOUR_API_KEY",
+    "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+    "endpointId": "YOUR_ENDPOINT_ID",
+    "jsonMode": true
+  },
+  "pipeline": {
+    "whisperxCommandTemplate": "conda run -n whisperx whisperx {audioPath} --output_dir {outputDir} --language zh --compute_type float32"
+  }
+}
