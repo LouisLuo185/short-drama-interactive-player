@@ -84,15 +84,6 @@ export function DramasPage() {
           </div>
         </div>
 
-        <div className="mt-8">
-          <Link
-            to="/admin/import"
-            className="inline-flex rounded-full bg-amber-300 px-5 py-3 text-sm font-black text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
-          >
-            导入短剧 JSON / URL
-          </Link>
-        </div>
-
         {error ? <StateCard title="操作失败" description={error} /> : null}
         {isLoading ? (
           <StateCard title="正在拉取短剧列表" description="后端服务启动后，这里会展示短剧数据。" />
