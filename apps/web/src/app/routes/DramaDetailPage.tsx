@@ -4,6 +4,7 @@ import { ADMIN_MODE } from "../../features/admin/adminConfig";
 import { updateDramaDescription, updateDramaTitle } from "../../features/admin/adminDramaActions";
 import { EditableText } from "../../features/admin/EditableText";
 import { fetchDramaDetail } from "../../services/dramaApi";
+import { resolveBackendUrl } from "../../services/http";
 import type { DramaDetail } from "../../types/drama";
 
 export function DramaDetailPage() {
@@ -161,12 +162,13 @@ function StateCard(props: { title: string; description: string }) {
 
 function DetailCover(props: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
+  const resolvedSrc = resolveBackendUrl(props.src);
 
   return (
     <div className="aspect-[3/4] overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_30%_20%,#f5c15d,transparent_30%),linear-gradient(135deg,#4a2213,#120d09)]">
       {!hasError ? (
         <img
-          src={props.src}
+          src={resolvedSrc}
           alt={props.alt}
           className="h-full w-full object-cover"
           onError={() => setHasError(true)}

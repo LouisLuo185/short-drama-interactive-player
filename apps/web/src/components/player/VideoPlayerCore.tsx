@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { usePlayerStore } from "../../stores/playerStore";
+import { resolveBackendUrl } from "../../services/http";
 import type { PlayerController } from "../../types/player";
 import type { TimelineUpdateReason } from "../../features/timeline/timelineScheduler";
 import type { PlaybackAnalyticsType } from "../../features/analytics/analyticsClient";
@@ -16,6 +17,7 @@ type VideoPlayerCoreProps = {
 export function VideoPlayerCore(props: VideoPlayerCoreProps) {
   const { episodeId, videoUrl, onControllerReady, onTimelineUpdate, onPlaybackEvent, onEnded } =
     props;
+  const resolvedVideoUrl = resolveBackendUrl(videoUrl);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const setStatus = usePlayerStore((state) => state.setStatus);
   const setCurrentTimeSec = usePlayerStore((state) => state.setCurrentTimeSec);
@@ -69,7 +71,7 @@ export function VideoPlayerCore(props: VideoPlayerCoreProps) {
     <video
       ref={videoRef}
       className="h-full w-full bg-black object-contain"
-      src={videoUrl}
+      src={resolvedVideoUrl}
       playsInline
       preload="metadata"
       onLoadedMetadata={(event) => {

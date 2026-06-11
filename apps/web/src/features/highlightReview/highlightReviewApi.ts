@@ -1,4 +1,4 @@
-import { getJson } from "../../services/http";
+import { getJson, resolveBackendUrl } from "../../services/http";
 import type {
   HighlightCandidateDebugResponse,
   LlmHighlightOverride
@@ -12,7 +12,9 @@ export function fetchHighlightCandidatesForReview(episodeId: string) {
 
 export async function saveHighlightOverride(episodeId: string, override: LlmHighlightOverride) {
   const response = await fetch(
-    `/api/episodes/${episodeId}/llm-highlight-overrides/${override.candidateId}`,
+    resolveBackendUrl(
+      `/api/episodes/${episodeId}/llm-highlight-overrides/${override.candidateId}`
+    ),
     {
       method: "PUT",
       headers: {

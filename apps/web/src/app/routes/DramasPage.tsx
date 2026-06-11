@@ -10,6 +10,7 @@ import {
 import { ConfirmDialog } from "../../features/admin/ConfirmDialog";
 import { EditableText } from "../../features/admin/EditableText";
 import { fetchDramas } from "../../services/dramaApi";
+import { resolveBackendUrl } from "../../services/http";
 import type { DramaCard } from "../../types/drama";
 
 export function DramasPage() {
@@ -189,12 +190,13 @@ function StateCard(props: { title: string; description: string }) {
 
 function CoverImage(props: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
+  const resolvedSrc = resolveBackendUrl(props.src);
 
   return (
     <div className="relative aspect-[4/3] overflow-hidden bg-[radial-gradient(circle_at_30%_20%,#f5c15d,transparent_28%),linear-gradient(135deg,#3f1f12,#110c08)]">
       {!hasError ? (
         <img
-          src={props.src}
+          src={resolvedSrc}
           alt={props.alt}
           className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105"
           onError={() => setHasError(true)}
